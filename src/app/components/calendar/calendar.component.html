@@ -1,0 +1,25 @@
+<div class="pt-3">
+  <div fxLayout="row">
+    <div fxLayout="row" fxLayoutAlign="space-beetwen center" fxFlex="45">
+      <button class="btn btn-primary" (click)="substractMonth()"><</button>      
+      <button class="btn btn-primary" (click)="addMonth()">></button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-beetwen center">
+      <h2>{{ monthNames[month ]}} {{ year }}</h2>
+    </div>
+  </div>
+    
+  <div fxLayout="row wrap" class="mt-3">
+    <div fxFlex="14" *ngFor="let day of daysWeek" class="dayList">
+      <h3 > {{ day }} </h3>
+    </div>
+  </div>
+    
+  <div fxLayout="row wrap">
+    <app-day
+        [day]="day"
+        fxFlex="14"
+        *ngFor="let day of days; let i = index">
+    </app-day>
+  </div>    
+</div>

@@ -1,0 +1,81 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Create event</h4>
+  <button type="button" class="btn" aria-label="Close" (click)="onCloseModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formGroup">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input  type="text" 
+              class="form-control" 
+              aria-describedby="emailHelp" 
+              placeholder="Title"
+              formControlName="title"
+              maxlength="30">
+      <div class="invalid-feedback" *ngIf="formGroup.get('title').hasError('required') && formSent">
+        The title is required
+      </div>
+      <div class="invalid-feedback" *ngIf="(formGroup.get('title').hasError('maxLength') && formGroup.get('title').touched)  ">
+        The long for this field is only 30 chars 
+      </div>
+    </div>
+
+    <div class="form-group mt-4">
+      <div class=" form-inline">
+        <div class="input-group">
+          <input class="form-control" 
+                placeholder="yyyy-mm-dd"
+                 name="dp" 
+                 formControlName="date"
+                 ngbDatepicker #d="ngbDatepicker"
+                 readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Hour</label>
+      <timepicker formControlName="time"></timepicker>
+    </div>
+
+    <div class="form-group">
+      <label for="color">Color</label>
+      <input  [(colorPicker)]="color" 
+              [style.background]="color" 
+              class="form-control"
+              (colorPickerSelect)="onChangeColor()"
+              id="color"/>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input  type="text" 
+              class="form-control" 
+              aria-describedby="emailHelp" 
+              placeholder="City"
+              formControlName="city">
+      <div class="invalid-feedback" *ngIf="formGroup.get('city').hasError('required') && formSent  ">
+        The city is required
+      </div>
+    </div>
+       
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="onCreateEvent()">
+    Save
+  </button>
+  <button type="button" class="btn btn-danger" (click)="onCloseModal()">
+    Close
+  </button>
+</div>
+
+

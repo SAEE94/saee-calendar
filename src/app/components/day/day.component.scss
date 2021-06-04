@@ -1,0 +1,32 @@
+.day-item{
+    border: 1px solid gainsboro;
+    height: 10rem;
+    background-color: #f0f0f0;
+    font-weight: bold;
+    span {
+        margin: 7px 7px;
+        position: absolute;
+        font-weight: 900;
+    }
+    
+}
+
+.day-item:hover{
+    cursor: pointer;
+}
+
+.is-weekend {
+    background-color: #cbcbcb;
+    color: blue;
+    font-weight: 900;
+    
+}
+
+.is-nextMonth{
+    color: gray !important;
+    font-weight: 0;
+}
+
+li {
+    font-size: 10px;
+}

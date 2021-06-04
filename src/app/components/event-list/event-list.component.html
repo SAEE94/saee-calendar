@@ -1,0 +1,18 @@
+<div class="containerList">
+    <div fxLayout="row" class="content" *ngIf="events?.length > 0">
+      <button class="btn btn-danger w-100" (click)="onRemoveAll()">
+        Remove all events <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div *ngFor="let event of events" [ngStyle]="{ background: event.color }" fxLayout="row" class="content">
+        <span>{{ event.title }} {{ event.time | date: "medium" }}</span>
+        <div style="display: flex;flex-direction: row;justify-content: flex-end;">
+          <button class="btn btn-warning" (click)="onEdit( event )">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-danger" (click)="onRemove( event )">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>  
+</div>

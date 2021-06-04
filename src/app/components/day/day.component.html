@@ -1,0 +1,11 @@
+<div [ngClass]="{'day-item': day, 'is-weekend' : day?.isWeekend, 'is-nextMonth': !day?.isWeekend && day?.isNextMonth }" (click)="onRegisterNewEvent()">
+    <div fxLayout="column" fxLayoutAlign="space-between start" >
+        <div>{{ day?.day }}</div>
+        <ul>
+            <li *ngFor="let event of events | slice:0:4">
+                {{ event.title }} {{ event.time | date: "shortTime" }}
+            </li>
+        </ul>        
+    </div>
+    <span *ngIf="events.length > 4"> View all </span>    
+</div>
